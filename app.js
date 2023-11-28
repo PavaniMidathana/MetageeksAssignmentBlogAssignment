@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 let db = null;
 const dbPath = path.join(__dirname, "blogApplication.db");
