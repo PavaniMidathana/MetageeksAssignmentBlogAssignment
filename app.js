@@ -34,7 +34,10 @@ const logTimestampMiddleware = (request, response, next) => {
 };
 
 app.get("/posts", logTimestampMiddleware, async (request, response) => {
-  const getPostsQuery = `SELECT * FROM Post`;
+  const getPostsQuery = `SELECT * 
+                        FROM Post 
+                        JOIN User 
+                        ON Post.UserID = User.UserID`;
   const postsArray = await db.all(getPostsQuery);
   response.send(postsArray);
 });
