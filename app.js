@@ -27,6 +27,7 @@ const initializeDBAndServer = async () => {
 };
 initializeDBAndServer();
 
+//Create an Express.js middleware that logs the timestamp and the requested URL for every incoming request.
 const logTimestampMiddleware = (request, response, next) => {
   const timestamp = new Date().toISOString();
   console.log(`${timestamp}: ${request.method} ${request.url}`);
@@ -34,6 +35,7 @@ const logTimestampMiddleware = (request, response, next) => {
   next();
 };
 
+//Implement an Express.js route that retrieves a list of posts from the database and returns it as JSON.
 app.get("/posts", logTimestampMiddleware, async (request, response) => {
   const getPostsQuery = `SELECT * 
                         FROM Post 
